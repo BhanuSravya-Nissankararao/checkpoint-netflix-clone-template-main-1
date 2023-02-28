@@ -4,7 +4,18 @@ import "./Navbar.css";
 const Navbar = () => {
   const [show, setShow] = useState(false);
   useEffect(() => {
-    
+    const handleScroll = () => {
+      const position = window.scrollY;
+      if (position > 100) {
+        setShow('#111');
+      } else {
+        setShow('transparent');
+      }
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
   }, []);
 
   return (
